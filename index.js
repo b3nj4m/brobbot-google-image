@@ -30,7 +30,7 @@ module.exports = function(robot) {
     }
     else {
       imageMe(msg, imagery, false, true, function(url) {
-        encodedUrl = encodeURIComponent url;
+        encodedUrl = encodeURIComponent(url);
         msg.send(mustachify + encodedUrl);
       });
     }
