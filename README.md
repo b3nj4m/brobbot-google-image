@@ -24,5 +24,5 @@ Adds a mustache to the image at the specified url.
 brobbot mustache [me] <query>
 ```
 
-Does an image search for <query>, then adds a mustache to the result.
+Does an image search for `query`, then adds a mustache to the result.
 
