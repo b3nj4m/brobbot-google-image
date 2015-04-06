@@ -7,19 +7,19 @@ module.exports = function(robot) {
   robot.helpCommand("brobbot mustache [me] `url`", "Adds a mustache to the image at the specified url.");
   robot.helpCommand("brobbot mustache [me] `query`", "Does an image search for `query`, then adds a mustache to the result.");
 
-  robot.respond(/(image|img)( me)? (.*)/i, function(msg) {
+  robot.respond(/^(image|img)( me)? (.*)/i, function(msg) {
     imageMe(msg, msg.match[3], function(url) {
       msg.send(url);
     });
   });
 
-  robot.respond(/animate( me)? (.*)/i, function(msg) {
+  robot.respond(/^animate( me)? (.*)/i, function(msg) {
     imageMe(msg, msg.match[2], true, function(url) {
       msg.send(url);
     });
   });
 
-  robot.respond(/(?:mo?u)?sta(?:s|c)h(?:e|ify)?(?: me)? (.*)/i, function(msg) {
+  robot.respond(/^(?:mo?u)?sta(?:s|c)h(?:e|ify)?(?: me)? (.*)/i, function(msg) {
     var type = Math.floor(Math.random() * 6);
     var mustachify = "http://mustachify.me/#{type}?src=";
     var imagery = msg.match[1];
