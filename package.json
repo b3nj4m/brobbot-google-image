@@ -1,6 +1,6 @@
 {
   "name": "brobbot-google-image",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Brobbot plugin for image searches",
   "main": "index.js",
   "scripts": {
