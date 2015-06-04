@@ -1,11 +1,16 @@
 // Description:
 //   A way to interact with the Google Images API.
+//
+// Configuration:
+//   BROBBOT_GOOGLE_IMAGE_REFERER - the referer URL to pass to the Google API
 
 module.exports = function(robot) {
   robot.helpCommand("brobbot image [me] `query`", "Googles `query` and returns 1st result's URL.");
   robot.helpCommand("brobbot animate [me] `query`", "Googles `query` and tries to return the first animated GIF result.");
   robot.helpCommand("brobbot mustache [me] `url`", "Adds a mustache to the image at the specified url.");
   robot.helpCommand("brobbot mustache [me] `query`", "Does an image search for `query`, then adds a mustache to the result.");
+
+  var REFERER = process.env.BROBBOT_GOOGLE_IMAGE_REFERER || 'https://npmjs.org/package/brobbot-google-image';
 
   robot.respond(/^(image|img)( me)? (.*)/i, function(msg) {
     imageMe(msg, msg.match[3], function(url) {
@@ -53,6 +58,7 @@ function imageMe(msg, query, animated, faces, cb) {
 
   msg.http('http://ajax.googleapis.com/ajax/services/search/images')
     .query(q)
+    .header('Referer', REFERER)
     .get()(function(err, res, body) {
       var images = JSON.parse(body);
       images = images.responseData ? images.responseData.results : null;

@@ -26,3 +26,12 @@ brobbot mustache [me] <query>
 
 Does an image search for `query`, then adds a mustache to the result.
 
+## Configuration
+
+### Referer
+
+```bash
+BROBBOT_GOOGLE_IMAGE_REFERER=url
+```
+
+Set the referer URL sent to the Google API (see https://developers.google.com/image-search/v1/jsondevguide).
