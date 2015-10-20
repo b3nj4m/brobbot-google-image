@@ -26,7 +26,7 @@ module.exports = function(robot) {
 
   robot.respond(/^(?:mo?u)?sta(?:s|c)h(?:e|ify)?(?: me)? (.*)/i, function(msg) {
     var type = Math.floor(Math.random() * 6);
-    var mustachify = "http://mustachify.me/#{type}?src=";
+    var mustachify = "http://mustachify.me/" + type + "?src=";
     var imagery = msg.match[1];
 
     if (imagery.match(/^https?:\/\//i)) {
