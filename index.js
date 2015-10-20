@@ -9,8 +9,6 @@ var REFERER = process.env.BROBBOT_GOOGLE_IMAGE_REFERER || 'https://npmjs.org/pac
 module.exports = function(robot) {
   robot.helpCommand("brobbot image [me] `query`", "Googles `query` and returns 1st result's URL.");
   robot.helpCommand("brobbot animate [me] `query`", "Googles `query` and tries to return the first animated GIF result.");
-  robot.helpCommand("brobbot mustache [me] `url`", "Adds a mustache to the image at the specified url.");
-  robot.helpCommand("brobbot mustache [me] `query`", "Does an image search for `query`, then adds a mustache to the result.");
 
   robot.respond(/^(image|img)( me)? (.*)/i, function(msg) {
     imageMe(msg, msg.match[3], function(url) {
@@ -22,23 +20,6 @@ module.exports = function(robot) {
     imageMe(msg, msg.match[2], true, function(url) {
       msg.send(url);
     });
-  });
-
-  robot.respond(/^(?:mo?u)?sta(?:s|c)h(?:e|ify)?(?: me)? (.*)/i, function(msg) {
-    var type = Math.floor(Math.random() * 6);
-    var mustachify = "http://mustachify.me/" + type + "?src=";
-    var imagery = msg.match[1];
-
-    if (imagery.match(/^https?:\/\//i)) {
-      encodedUrl = encodeURIComponent(imagery);
-      msg.send(mustachify + encodedUrl);
-    }
-    else {
-      imageMe(msg, imagery, false, true, function(url) {
-        encodedUrl = encodeURIComponent(url);
-        msg.send(mustachify + encodedUrl);
-      });
-    }
   });
 };
 

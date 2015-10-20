@@ -14,18 +14,6 @@ brobbot animate [me] <query>
 
 Googles `query` and tries to return the first animated GIF result.
 
-```
-brobbot mustache [me] <url>
-```
-
-Adds a mustache to the image at the specified url.
-
-```
-brobbot mustache [me] <query>
-```
-
-Does an image search for `query`, then adds a mustache to the result.
-
 ## Configuration
 
 ### Referer
