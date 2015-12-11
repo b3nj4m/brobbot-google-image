@@ -1,4 +1,6 @@
-# brobbot-google-image
+# brobbot-google-image (deprecated)
+
+## Google has apparently shut down the image search API.
 
 A brobbot plugin for image searches.
 
